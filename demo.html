@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <!-- Script -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="src/jquery.tokeninput.js"></script>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="styles/token-input.css" type="text/css" />
+        <link rel="stylesheet" href="styles/token-input-facebook.css" type="text/css" />
+        <style>
+            body {
+                max-width: 400px;
+                margin: 100px auto;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h2>
+            Find name [server side render]
+            
+        </h2>
+        <p>
+            Type the following names: <br />
+            <div style="padding-left:15px">
+                <em
+                >Ervin <br />
+                Leanne <br />
+                Clementine <br />
+                Dennis <br />
+                Nicholas <br />
+                Clementina</em>
+            </div>
+        </p>
+        <div>
+            <input type="text" id="tags" name="tags" />
+            <input type="button" value="Submit" id="tagSubmit" style="margin-top: 10px" />
+            <br>
+            <br>
+            <small><em>* This is real example that you will use in your application</em></small>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    // Use url to serach. Ex: https://myurl/tag-serach
+                    $("#tags").tokenInput(
+                        "https://jsonplaceholder.typicode.com/users", //
+                        {
+                            minChars: 3,
+                            preventDuplicates: true,
+                        }
+                    );
+                });
+                $(document).ready(function () {
+                    let tagsItems = "";
+                    $("#tags").change(function () {
+                        tagsItems = $("#tags").val();
+                    });
+                    $("#tagSubmit").click(function () {
+                        alert(tagsItems);
+                    });
+                });
+            </script>
+        </div>
+
+        <br>
+        <br>
+        <hr />
+        <br>
+        <h2>
+            Find tag [Local Data Search]
+            <br>
+            
+        </h2>
+        <p>
+            Type the following tag: <br />
+            <div style="padding-left:15px">
+                <em
+                >Monkey pox - মাঙ্কিপক্স <br />
+                Hajj - হজ <br />
+                Economic crisis - অর্থনৈতিক সংকট <br />
+                Oil market price - তেলের বাজার দর <br />
+                Bangladesh Cricket - বাংলাদেশ ক্রিকেট</em
+            >
+            </div>
+        </p>
+        <div>
+            <input type="text" id="normalTags" name="normalTags" />
+            <input type="button" value="Submit" id="normalTagSubmit" style="margin-top: 10px"/>
+
+            <br>
+            <br>
+            <small><em>* This is demo example</em></small>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#normalTags").tokenInput(
+                        [
+                            { id: 1, name: "Monkey pox - মাঙ্কিপক্স" },
+                            { id: 2, name: "Hajj - হজ" },
+                            { id: 3, name: "Economic crisis - অর্থনৈতিক সংকট" },
+                            { id: 4, name: "Oil market price - তেলের বাজার দর" },
+                            { id: 5, name: "Bangladesh Cricket - বাংলাদেশ ক্রিকেট" },
+                        ],
+                        {
+                            minChars: 3,
+                            preventDuplicates: true,
+                        }
+                    );
+                });
+                $(document).ready(function () {
+                    let tagsItems = "";
+                    $("#normalTags").change(function () {
+                        tagsItems = $("#normalTags").val();
+                    });
+                    $("#normalTagSubmit").click(function () {
+                        alert(tagsItems);
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>
